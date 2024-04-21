@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/itemHome">
+    <fragment
+        android:id="@+id/itemHome"
+        android:name="com.example.hobbyapp.view.HomeFragment"
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_profile_fragment"
+            app:destination="@id/itemProfile" />
+        <action
+            android:id="@+id/action_reading_history_fragment"
+            app:destination="@id/itemReadingHistory" />
+        <action
+            android:id="@+id/action_detail_fragment"
+            app:destination="@id/itemHobbyDetail" />
+    </fragment>
+    <fragment
+        android:id="@+id/itemReadingHistory"
+        android:name="com.example.hobbyapp.view.ReadingHistoryFragment"
+        android:label="Reading History"
+        tools:layout="@layout/fragment_reading_history" />
+    <fragment
+        android:id="@+id/itemProfile"
+        android:name="com.example.hobbyapp.view.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/itemHobbyDetail"
+        android:name="com.example.hobbyapp.view.HobbyDetailFragment"
+        android:label="Hobby Detail"
+        tools:layout="@layout/fragment_hobby_detail" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+    </fragment>
+</navigation>
+
