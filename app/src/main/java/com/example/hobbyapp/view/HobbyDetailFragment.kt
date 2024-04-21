@@ -52,79 +52,79 @@ class HobbyDetailFragment : Fragment() {
 
     fun observeViewModel() {
         //bertujuan untuk mendengarkan dari live data. jika data baru muncul, maka UI akan menanggapi
-        viewModel.hobbyLD.observe(viewLifecycleOwner, Observer {hobbies ->
-//            var length = it.size
-//
-//            displayData()
-//
-//            if(multiPage == 0){
-//                binding.btnPrev.isEnabled = false
-//                binding.btnNext.isEnabled = true
-//            }
-//
-//            binding.btnNext.setOnClickListener {
-//                multiPage+=1
-//                displayData()
-//                if(multiPage == 0){
-//                    binding.btnPrev.isEnabled = false
-//                    binding.btnNext.isEnabled = true
-//                }
-//                else if(multiPage+1 == length){
-//                    binding.btnPrev.isEnabled = true
-//                    binding.btnNext.isEnabled = false
-//                }
-//                else{
-//                    binding.btnPrev.isEnabled = true
-//                    binding.btnNext.isEnabled = true
-//                }
-//            }
-//
-//            binding.btnPrev.setOnClickListener {
-//                multiPage-=1
-//                displayData()
-//                if(multiPage == 0){
-//                    binding.btnPrev.isEnabled = false
-//                    binding.btnNext.isEnabled = true
-//                }
-//                else if(multiPage-1 == length){
-//                    binding.btnPrev.isEnabled = true
-//                    binding.btnNext.isEnabled = false
-//                }
-//            }
-
-            val length = hobbies.size
+        viewModel.hobbyLD.observe(viewLifecycleOwner, Observer {hobbies->
+            var length = hobbies.size
 
             displayData()
 
-            binding.btnPrev.isEnabled = multiPage > 0
-            binding.btnNext.isEnabled = multiPage < length - 1
+            if(multiPage == 0){
+                binding.btnPrev.isEnabled = false
+                binding.btnNext.isEnabled = true
+            }
 
             binding.btnNext.setOnClickListener {
-                multiPage++
+                multiPage+=1
                 displayData()
+                if(multiPage == 0){
+                    binding.btnPrev.isEnabled = false
+                    binding.btnNext.isEnabled = true
+                }
+                else if(multiPage+1 == length){
+                    binding.btnPrev.isEnabled = true
+                    binding.btnNext.isEnabled = false
+                }
+                else{
+                    binding.btnPrev.isEnabled = true
+                    binding.btnNext.isEnabled = true
+                }
             }
 
             binding.btnPrev.setOnClickListener {
-                multiPage--
+                multiPage-=1
                 displayData()
+                if(multiPage == 0){
+                    binding.btnPrev.isEnabled = false
+                    binding.btnNext.isEnabled = true
+                }
+                else if(multiPage-1 == length){
+                    binding.btnPrev.isEnabled = true
+                    binding.btnNext.isEnabled = false
+                }
             }
+
+//            val length = hobbies.size
+//
+//            displayData()
+//
+//            binding.btnPrev.isEnabled = multiPage > 0
+//            binding.btnNext.isEnabled = multiPage < length - 1
+//
+//            binding.btnNext.setOnClickListener {
+//                multiPage++
+//                displayData()
+//            }
+//
+//            binding.btnPrev.setOnClickListener {
+//                multiPage--
+//                displayData()
+//            }
         })
     }
 
-//    fun displayData(){
-//        Picasso.get().load(viewModel.hobbyLD.value?.get(multiPage)?.photoUrl).into(binding.imageView)
-//        binding.txtHobbyName.text = viewModel.hobbyLD.value?.get(multiPage)?.name_hobby
-//        binding.txtCreator.text = viewModel.hobbyLD.value?.get(multiPage)?.name
-//        binding.txtAdditional.text = viewModel.hobbyLD.value?.get(multiPage)?.additional
-//    }
-
-    private fun displayData() {
-        val hobby = viewModel.hobbyLD.value?.get(multiPage)
-        hobby?.let {
-            Picasso.get().load(it.photoUrl).into(binding.imageView)
-            binding.txtHobbyName.text = it.name_hobby
-            binding.txtCreator.text = it.name
-            binding.txtAdditional.text = it.additional
-        }
+    fun displayData(){
+        Picasso.get().load(viewModel.hobbyLD.value?.get(multiPage)?.photoUrl).into(binding.imageView)
+        binding.txtHobbyName.text = viewModel.hobbyLD.value?.get(multiPage)?.name_hobby
+        binding.txtCreator.text = viewModel.hobbyLD.value?.get(multiPage)?.name
+        binding.txtAdditional.text = viewModel.hobbyLD.value?.get(multiPage)?.additional
     }
+
+//    private fun displayData() {
+//        val hobby = viewModel.hobbyLD.value?.get(multiPage)
+//        hobby?.let {
+//            Picasso.get().load(it.photoUrl).into(binding.imageView)
+//            binding.txtHobbyName.text = it.name_hobby
+//            binding.txtCreator.text = it.name
+//            binding.txtAdditional.text = it.additional
+//        }
+//    }
 }
